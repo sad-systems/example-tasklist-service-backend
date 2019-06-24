@@ -1,0 +1,19 @@
+{
+    "name": "digger/tasklist",
+    "description": "Task list demo",
+    "type": "project",
+    "require": {
+        "webonyx/graphql-php": "^0.13.5"
+    },
+    "authors": [
+        {
+            "name": "MrDigger",
+            "email": "mrdigger@mail.ru"
+        }
+    ],
+    "autoload" : {
+        "psr-4": {
+            "app\\": "src"
+        }
+    }
+}
