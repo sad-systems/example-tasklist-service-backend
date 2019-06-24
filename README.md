@@ -24,4 +24,4 @@ It is intended to be an alternative to REST and SOAP APIs
  
 ### Project source files
 
-  All the file placed under the [/src](./src) folder
+  All the files are placed under the [/src](./src) folder
