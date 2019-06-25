@@ -2,6 +2,8 @@
 
 > Change language: [![Русский](docs/assets/images/ru.gif)](README.ru.md) [![English](docs/assets/images/en.gif)](README.md)
 
+> Посмотреть [oписание классов](http://tasklist.backend.examples.sad-systems.ru/docs/index.html)
+
 ###### Автор: MrDigger <mrdigger@mail.ru>
 ###### © SAD-Systems [http://sad-systems.ru](), 2019
 
