@@ -1,17 +1,17 @@
 <?php
-/**
- * Email type
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 13:18
- */
 
 namespace app\QueryTypes;
 
 use app\Exceptions\IncorrectValue;
 use GraphQL\Type\Definition\ScalarType;
 
+/**
+ * Email type
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
 class EmailType extends ScalarType
 {
     public function serialize($value)

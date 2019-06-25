@@ -1,17 +1,17 @@
 <?php
-/**
- * Task type
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 13:18
- */
 
 namespace app\QueryTypes;
 
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\Type;
 
+/**
+ * Task type
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
 class TaskType extends ObjectType
 {
     public function __construct()

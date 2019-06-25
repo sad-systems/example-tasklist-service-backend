@@ -1,17 +1,22 @@
 <?php
-/**
- * Output response class
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 11:54
- */
 
 namespace app\Services;
 
-class Response
+use app\Interfaces\IResponse;
+
+/**
+ * Output response class
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
+class Response implements IResponse
 {
-    public function createError(\Exception $exception) : array
+    /**
+     * @inheritdoc
+     */
+    public function createError(\Exception $exception): array
     {
         return [
             'error' => [
@@ -20,11 +25,17 @@ class Response
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function createResponseError(\Exception $exception): string
     {
         return $this->createResponse( $this->createError($exception) );
     }
 
+    /**
+     * @inheritdoc
+     */
     public function createResponse($data): string
     {
         header('Content-Type: application/json; charset=UTF-8');

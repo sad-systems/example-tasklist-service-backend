@@ -2,7 +2,6 @@
 /**
  * PDO storage configuration
  */
-
 return [
     'dbtype'   => 'mysql',
     'host'     => 'localhost',

@@ -1,20 +1,26 @@
 <?php
-/**
- * Exception "Value is incorrect"
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 17:22
- */
 
 namespace app\Exceptions;
 
 use Throwable;
 use GraphQL\Error\ClientAware;
 
+/**
+ * Exception "Value is incorrect"
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
 class IncorrectValue extends \Exception implements ClientAware
 {
-
+    /**
+     * IncorrectValue constructor.
+     *
+     * @param string $message
+     * @param int    $code
+     * @param Throwable|null $previous
+     */
     public function __construct(string $message = '', int $code = -2, Throwable $previous = null)
     {
         parent::__construct('Incorrect value' . ($message ? ' of: ' . $message : ''), $code, $previous);
@@ -45,5 +51,4 @@ class IncorrectValue extends \Exception implements ClientAware
     {
         return 'access';
     }
-
 }

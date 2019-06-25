@@ -1,11 +1,4 @@
 <?php
-/**
- * The factory for query types
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 12:26
- */
 
 namespace app;
 
@@ -13,6 +6,13 @@ use app\QueryTypes\RootMutationType;
 use app\QueryTypes\RootQueryType;
 use app\QueryTypes\TaskType;
 
+/**
+ * The factory for query types
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
 class QueryTypeFactory
 {
 

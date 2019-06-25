@@ -1,19 +1,45 @@
 <?php
+
+namespace app\Storages;
+
+use app\Interfaces\IStorage;
+
 /**
- * PDO Storage class
+ * PDO storage adapter.
  *
- * User: Digger
- * Date: 22.06.2019
- * Time: 17:47
+ * @description The class to manipulate with databases connected through the PDO driver.
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
  */
-
-namespace app;
-
-class Storage
+class PdoStorage implements IStorage
 {
-    private $connector;
-    private $limitMax = 100;
+    /**
+     * The current PDO instance
+     * @var \PDO
+     */
+    protected $connector;
 
+    /**
+     * The maximum row count by default.
+     * @var int
+     */
+    protected $limitMax = 100;
+
+    /**
+     * PdoStorage constructor.
+     *
+     * @param array $config An array of database communication params:
+     *      [
+     *          'dbtype'   =>
+     *          'host'     =>
+     *          'database' =>
+     *          'username' =>
+     *          'password' =>
+     *          'limitmax' => the maximum row count is possible for any fetch requests
+     *      ]
+     */
     public function __construct(array $config)
     {
         $this->connector = new \PDO("{$config['dbtype']}:host={$config['host']};dbname={$config['database']}", $config['username'], $config['password']);
@@ -24,15 +50,15 @@ class Storage
     }
 
     /**
-     * For SELECT
+     * For SQL SELECT query.
      *
-     * @param string $query
-     * @param array $params
-     * @param array $order
-     * @param int $offset
-     * @param int $limit
+     * @param string $query  SQL SELECT query string with params templates ( `?` or `:name` ).
+     * @param array  $params The query params.
+     * @param array  $order  The query ORDER BY statement as an array of structure: [ ['field' => ..., 'direction' => asc|desc ], ... ].
+     * @param int    $offset Value of the result limitation offset.
+     * @param int    $limit  Value of the result limitation of maximum row count.
      *
-     * @return array
+     * @return array An array of objects are fetched from database.
      *
      * @throws \Exception
      */
@@ -48,12 +74,12 @@ class Storage
     }
 
     /**
-     * For INSERT, UPDATE DELETE
+     * For SQL INSERT, UPDATE DELETE query.
      *
-     * @param string $query
-     * @param array $params
+     * @param string $query  SQL INSERT, UPDATE or DELETE query string with params templates ( `?` or `:name` ).
+     * @param array  $params The query params.
      *
-     * @return \PDOStatement
+     * @return \PDOStatement The result statement.
      *
      * @throws \Exception
      */
@@ -69,9 +95,7 @@ class Storage
     }
 
     /**
-     * Returns the ID of the last inserted row or sequence value
-     *
-     * @return string
+     * @inheritdoc
      */
     public function getLastInsertId(): string
     {
@@ -79,12 +103,12 @@ class Storage
     }
 
     /**
-     * Helper to obtain the LIMIT string
+     * Helper to obtain the LIMIT string.
      *
-     * @param int $offset
-     * @param int $limit
+     * @param int $offset Value of the result limitation offset.
+     * @param int $limit  Value of the result limitation of maximum row count.
      *
-     * @return string
+     * @return string 'LIMIT ... ' SQL statement.
      */
     protected function getLimit(int $offset, int $limit): string
     {
@@ -92,11 +116,11 @@ class Storage
     }
 
     /**
-     * Helper to obtain the ORDER BY string
+     * Helper to obtain the ORDER BY string.
      *
      * @param array $orderBy An array of: [ ['field' => ..., 'direction' => asc|desc ], ... ]
      *
-     * @return string
+     * @return string 'ORDER BY ... ' SQL statement.
      */
     protected function getOrderByString(array $orderBy): string
     {

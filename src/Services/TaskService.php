@@ -1,34 +1,32 @@
 <?php
-/**
- * Service to manipulate of tasks
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 14:45
- */
 
 namespace app\Services;
 
-use app\Storage;
+use app\Interfaces\IStorage;
+use app\Interfaces\ITaskService;
 
-class TaskService
+/**
+ * Service to manipulate of tasks.
+ * Contains a business logic.
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
+class TaskService implements ITaskService
 {
-
     private $storage;
 
-    public function __construct(Storage $storage)
+    /**
+     * @inheritdoc
+     */
+    public function __construct(IStorage $storage)
     {
         $this->storage = $storage;
     }
 
     /**
-     * Returns a list of tasks
-     *
-     * @param int $offset
-     * @param int $limit
-     * @param array $order
-     *
-     * @return array
+     * @inheritdoc
      *
      * @throws \Exception
      */
@@ -40,9 +38,7 @@ class TaskService
     }
 
     /**
-     * Returns the total count of tasks
-     *
-     * @return int
+     * @inheritdoc
      *
      * @throws \Exception
      */
@@ -54,14 +50,7 @@ class TaskService
     }
 
     /**
-     * Creates a new task
-     *
-     * @param string $text
-     * @param string $email
-     * @param string $name
-     * @param bool $status
-     *
-     * @return null|string
+     * @inheritdoc
      *
      * @throws \Exception
      */
@@ -75,12 +64,7 @@ class TaskService
     }
 
     /**
-     * Edit the existed task
-     *
-     * @param string $id
-     * @param string $text
-     * @param bool $status
-     * @return bool
+     * @inheritdoc
      *
      * @throws \Exception
      */
@@ -92,10 +76,11 @@ class TaskService
     }
 
     /**
-     * Updates name of an existed user or create new
+     * Updates name of an existed user or create new.
      *
      * @param string $email
      * @param string $name
+     *
      * @throws \Exception
      */
     protected function updateUser(string $email, string $name = '')
@@ -107,5 +92,4 @@ class TaskService
 
         $this->storage->execute($query, [':email' => $email, ':name' => $name]);
     }
-
 }

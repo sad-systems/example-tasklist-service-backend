@@ -1,26 +1,33 @@
 <?php
-/**
- * Main controller of the application
- *
- * User: MrDigger
- * Date: 22.06.2019
- * Time: 10:51
- */
+
 namespace app;
 
-use app\Services\Request;
-use app\Services\Response;
+use app\Interfaces\IRequest;
+use app\Interfaces\IResponse;
 use GraphQL\GraphQL;
 use GraphQL\Type\Schema;
 
+/**
+ * Main controller of the application
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
 class Application
 {
-
     private $request;
     private $response;
     private $queryTypeFactory;
 
-    public function __construct(Request $request, Response $response, QueryTypeFactory $queryTypeFactory)
+    /**
+     * Application constructor.
+     *
+     * @param IRequest         $request
+     * @param IResponse        $response
+     * @param QueryTypeFactory $queryTypeFactory
+     */
+    public function __construct(IRequest $request, IResponse $response, QueryTypeFactory $queryTypeFactory)
     {
         $this->request          = $request;
         $this->response         = $response;
@@ -47,5 +54,4 @@ class Application
 
         return $this->response->createResponse($result);
     }
-
 }

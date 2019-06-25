@@ -1,17 +1,18 @@
 <?php
-/**
- * Authentication service
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 16:01
- */
 
 namespace app\Services;
 
 use app\Exceptions\NotEnoughPrivileges;
+use app\Interfaces\IAuthService;
 
-class AuthService
+/**
+ * Authentication service
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
+class AuthService implements IAuthService
 {
     // --- For demo version:
     private static $adminToken = 'FGHGFTRE79G632XDROO000123GDERF';
@@ -19,12 +20,7 @@ class AuthService
     private static $adminPass  = '123';
 
     /**
-     * Returns user's access token for registered user
-     *
-     * @param string $user
-     * @param string $password
-     *
-     * @return null|string
+     * @inheritdoc
      */
     public function getAccessToken(string $user, string $password): ?string
     {
@@ -33,9 +29,7 @@ class AuthService
     }
 
     /**
-     * Checks if token is valid
-     *
-     * @param string $accessToken
+     * @inheritdoc
      *
      * @throws NotEnoughPrivileges
      */
@@ -46,5 +40,4 @@ class AuthService
             throw new NotEnoughPrivileges();
         }
     }
-
 }

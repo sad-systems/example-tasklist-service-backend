@@ -1,11 +1,4 @@
 <?php
-/**
- * The root query type
- *
- * User: Digger
- * Date: 22.06.2019
- * Time: 12:29
- */
 
 namespace app\QueryTypes;
 
@@ -14,6 +7,13 @@ use app\QueryTypeFactory;
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\Type;
 
+/**
+ * The root query type
+ *
+ * @author     MrDigger <mrdigger@mail.ru>
+ * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
+ * @created_on 25.06.2019
+ */
 class RootQueryType extends ObjectType
 {
     public function __construct(QueryTypeFactory $queryTypeFactory, QueryServiceFactory $queryServiceFactory)
