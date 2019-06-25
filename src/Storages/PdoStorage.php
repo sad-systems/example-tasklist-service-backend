@@ -7,7 +7,7 @@ use app\Interfaces\IStorage;
 /**
  * PDO storage adapter.
  *
- * @description The class to manipulate with databases connected through the PDO driver.
+ * The class to manipulate with databases connected through the PDO driver.
  *
  * @author     MrDigger <mrdigger@mail.ru>
  * @copyright  © SAD-Systems [http://sad-systems.ru], 2019
@@ -17,13 +17,13 @@ class PdoStorage implements IStorage
 {
     /**
      * The current PDO instance
-     * @var \PDO
+     * @var \PDO $connector
      */
     protected $connector;
 
     /**
      * The maximum row count by default.
-     * @var int
+     * @var int $limitMax
      */
     protected $limitMax = 100;
 
@@ -31,6 +31,7 @@ class PdoStorage implements IStorage
      * PdoStorage constructor.
      *
      * @param array $config An array of database communication params:
+     * ~~~
      *      [
      *          'dbtype'   =>
      *          'host'     =>
@@ -39,6 +40,7 @@ class PdoStorage implements IStorage
      *          'password' =>
      *          'limitmax' => the maximum row count is possible for any fetch requests
      *      ]
+     * ~~~
      */
     public function __construct(array $config)
     {
