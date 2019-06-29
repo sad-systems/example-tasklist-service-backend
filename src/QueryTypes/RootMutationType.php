@@ -20,7 +20,7 @@ class RootMutationType extends ObjectType
     {
         parent::__construct([
             'fields' => function () use ($queryTypeFactory, $queryServiceFactory) { return [
-                'task_new' => [
+                'taskNew' => [
                     'type' => Type::string(),
                     'description' => 'Adds a new task. Returns the ID of the new task or null',
                     'args' => [
@@ -33,7 +33,7 @@ class RootMutationType extends ObjectType
                         return $queryServiceFactory->getTaskService()->createNewTask($args['text'], $args['email'], $args['name'] ?? '', $args['status'] ?? false);
                     }
                 ],
-                'task_edit' => [
+                'taskEdit' => [
                     'type' => Type::boolean(),
                     'description' => 'Changes the existing task. Returns TRUE if changes are made, FALSE otherwise.',
                     'args' => [

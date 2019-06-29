@@ -32,9 +32,9 @@ class RootQueryType extends ObjectType
                         return $queryServiceFactory->getTaskService()->getTasks($args['offset'] ?? 0, $args['limit']  ?? 3, $args['order'] ?? []);
                     }
                 ],
-                'tasks_total' => [
+                'tasksTotal' => [
                     'type' => Type::int(),
-                    'description' => 'the total count of tasks',
+                    'description' => 'The total count of tasks',
                     'resolve' => function ($root, $args) use ($queryServiceFactory) {
                         return $queryServiceFactory->getTaskService()->getTaskTotalCount();
                     }
